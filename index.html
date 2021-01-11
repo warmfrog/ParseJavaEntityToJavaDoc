@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>entity parse</title>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+  <textarea id="entity_field" form="user-form" rows="20" cols="60"></textarea>
+  <button id="parse" onclick="parse_entity()">Parse</button>
+
+  <table id="fieldList" border="1" cellspacing="0" cellpadding="0">
+    <tr>
+      <th>字段名</th>
+      <th>字段类型</th>
+      <th>字段含义</th>
+      <th>是否允许为空</th>
+      <th>备注</th>
+    </tr>
+  </table>
+
+  <script>
+    function parse_entity() {
+      var content = $("#entity_field").val();
+      var lines = content.split("\n");
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var sp = line.split(";");
+        var field = sp[0];
+        var comment = sp[1].replace("//", "");
+        var f = field.trim().split(" ");
+        var type = f[1];
+        var field_name = f[2];
+
+        $("#fieldList")
+          .append(
+            $("<tr></tr>")
+              .append($("<td></td>").text(field_name))
+              .append($("<td></td>").text(type))
+              .append($("<td></td>").text(comment))
+              .append($("<td></td>"))
+              .append($("<td></td>"))
+          );
+
+      }
+    }
+  </script>
+
+</body>
+
+</html>
