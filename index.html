@@ -10,10 +10,11 @@
 <body>
 
 
-  <textarea id="entity_field" form="user-form" rows="20" cols="60"></textarea>
+  <textarea style="margin-left: 40px; margin-top: 30px;" id="entity_field" form="user-form" rows="20"
+    cols="160"></textarea><br>
   <button id="parse" onclick="parse_entity()">Parse</button>
 
-  <table id="fieldList" border="1" cellspacing="0" cellpadding="0">
+  <table style="margin: auto; margin-top: 30px;" id="fieldList" border="1" cellspacing="0" cellpadding="0">
     <tr>
       <th>字段名</th>
       <th>字段类型</th>
@@ -40,6 +41,7 @@
           var type = f[1];
           var field_name = f[2];
 
+
           $("#fieldList")
             .append(
               $("<tr></tr>")
@@ -50,6 +52,7 @@
                 .append($("<td></td>"))
             );
         }
+
       }
     }
   </script>
